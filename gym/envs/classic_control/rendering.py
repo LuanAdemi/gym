@@ -139,6 +139,14 @@ class Viewer(object):
         _add_attrs(geom, attrs)
         self.add_onetime(geom)
         return geom
+    
+    def text(self, text, x, y, font_size=20, color=None):
+        """Draw text"""
+        y = self.top - y
+        label = pyglet.text.Label(text, font_size=font_size,
+                                  x=x, y=y, anchor_x='left', anchor_y='top',
+                                  color=[int(c) for c in color])
+        label.draw()
 
     def get_array(self):
         self.window.flip()
